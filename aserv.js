@@ -81,6 +81,7 @@ var batchSql = function(batchName, sql, off, dbClient, resp, finished) {
 // ---------------- database updaters ----------------
 
 var initUser = function(mahId, email, dbClient, resp) {
+    mahId = mahId.toLowerCase();
     console.log("init '"+mahId+"'");
     var pass = Math.random().toString(36).substring(2, 10);
     batchSql('create',
