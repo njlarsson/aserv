@@ -117,13 +117,13 @@ var sendBasePage = function(resp) {
 };
 
 var createAccount = function(mahId, resp) {
-    mahId = mahId.toLowerCase();
     var dbClient = dbConnect();
 
-    var query = dbClient.query("select email, inited from mahuser where mahid=$1", [mahId]);
+    var query = dbClient.query("select mahid, email, inited from mahuser where mahid=$1 or mahid=$2 or mahid=$3", [mahId, mahId.toLowerCase(), mahId.toUpperCase()]);
     var email, inited;
     query
         .on('row', function(row) {
+            mahid = row.mahid;
             email = row.email;
             inited = row.inited;
         })
