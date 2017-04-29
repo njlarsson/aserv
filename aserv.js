@@ -123,7 +123,7 @@ var createAccount = function(mahId, resp) {
     var email, inited;
     query
         .on('row', function(row) {
-            mahid = row.mahid;
+            mahId = row.mahid;
             email = row.email;
             inited = row.inited;
         })
