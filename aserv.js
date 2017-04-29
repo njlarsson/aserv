@@ -81,7 +81,6 @@ var batchSql = function(batchName, sql, off, dbClient, resp, finished) {
 // ---------------- database updaters ----------------
 
 var initUser = function(mahId, email, dbClient, resp) {
-    mahId = mahId.toLowerCase();
     console.log("init '"+mahId+"'");
     var pass = Math.random().toString(36).substring(2, 10);
     batchSql('create',
@@ -118,6 +117,7 @@ var sendBasePage = function(resp) {
 };
 
 var createAccount = function(mahId, resp) {
+    mahId = mahId.toLowerCase();
     var dbClient = dbConnect();
 
     var query = dbClient.query("select email, inited from mahuser where mahid=$1", [mahId]);
