@@ -118,6 +118,7 @@ var sendBasePage = function(resp) {
 
 var createAccount = function(mahId, resp) {
     var dbClient = dbConnect();
+    mahId = mahId || '';
 
     var query = dbClient.query("select mahid, email, inited from mahuser where mahid=$1 or mahid=$2 or mahid=$3", [mahId, mahId.toLowerCase(), mahId.toUpperCase()]);
     var email, inited;
